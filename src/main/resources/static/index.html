@@ -1,57 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>WebSocket Chat Application </title>
-    <link 
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-        rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" 
-        crossorigin="anonymous">
-    <link href="/style.css" rel="stylesheet">
-    <script 
-        src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js" 
-        integrity="sha256-iaFenEC8axSAnyNu6M0+0epCOTwfbKVceFXNd5s/ki4=" 
-        crossorigin="anonymous"></script>
-    <script src="/app.js"></script>
-</head>
-<body>
-<div id="main-content" class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <form class="form-inline">
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+      <title>Spring Boot WebSocket Chat Application</title>
+      <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <noscript>
+      <h2>Sorry! Your browser doesn't support Javascript</h2>
+    </noscript>
+
+    <div id="username-page">
+        <div class="username-page-container">
+            <h1 class="title">Type your username</h1>
+            <form id="usernameForm" name="usernameForm">
                 <div class="form-group">
-                    <label for="connect">Chat Application:</label>
-                    <button id="connect" type="button">Start New Chat</button>
-                    <button id="disconnect" type="button" disabled="disabled">End Chat
-                    </button>
+                    <input type="text" id="name" placeholder="Username" autocomplete="off" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="accent username-submit">Start Chatting</button>
                 </div>
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="chat">
-                <thead>
-                <tr>
-                    <th>Welcome user. Please enter you name</th>
-                </tr>
-                </thead>
-                <tbody id="helloworldmessage">
-                </tbody>
-            </table>
-        </div>
-            <div class="row">
-        
-        <div class="col-md-6">
-            <form class="form-inline">
+
+    <div id="chat-page" class="hidden">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h2>Spring WebSocket Chat Demo</h2>
+            </div>
+            <div class="connecting">
+                Connecting...
+            </div>
+            <ul id="messageArea">
+
+            </ul>
+            <form id="messageForm" name="messageForm">
                 <div class="form-group">
-                    <textarea id="user" placeholder="Write your message here..." required></textarea>
+                    <div class="input-group clearfix">
+                        <input type="text" id="message" placeholder="Type a message..." autocomplete="off" class="form-control"/>
+                        <button type="submit" class="primary">Send</button>
+                    </div>
                 </div>
-                <button id="send" type="submit">Send</button>
             </form>
         </div>
-        </div>
     </div>
- 
-</div>
-</body>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
 </html>
